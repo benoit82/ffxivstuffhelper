@@ -12,7 +12,7 @@ module.exports = {
   moduleNameMapper: {
     '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     '^@styles/(.*)$': '<rootDir>/styles/$1',
-    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@/(.*)$': '<rootDir>/$1',
     // '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
     // '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$':
     //   '<rootDir>/__mocks__/fileMock.js',
