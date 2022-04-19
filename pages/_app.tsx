@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import TopBar from '@/components/TopBar';
-import { Box, Button, CssBaseline, Drawer, IconButton } from '@mui/material';
+import { Box, CssBaseline, Drawer, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -10,23 +10,19 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [useDarkMode, setUseDarkMode] = useState(true);
   const drawerWidth = 250;
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-    },
-  });
-  const lightTheme = createTheme({
-    palette: {
-      mode: 'light',
-    },
-  });
 
   const toggleDrawerMenu = () => {
     setOpenDrawer(!openDrawer);
   };
 
+  const setTheme = (darkMode: boolean) => createTheme({
+    palette: {
+      mode: darkMode ? 'dark' : 'light',
+    },
+  })
+
   return (
-    <ThemeProvider theme={useDarkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={setTheme(useDarkMode)}>
       <CssBaseline />
       <Drawer
         sx={{ width: drawerWidth }}
@@ -51,6 +47,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-// <Component {...pageProps} />
 
 export default MyApp;
