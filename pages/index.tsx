@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import type { NextPage } from 'next';
 import { useTranslation } from 'react-i18next';
 import styles from '../styles/Home.module.scss';
