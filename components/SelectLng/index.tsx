@@ -4,23 +4,25 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserLang, UserState } from '@/src/redux';
 
 const language = {
   en: 'en',
   fr: 'fr',
 };
 
-interface SelectLngProps {
-  lang?: string;
-}
 
-const SelectLng: FC<SelectLngProps> = ({ lang = language.en }) => {
-  const [lng, setLng] = useState(lang);
+const SelectLng: FC = () => {
+  const user: UserState = useSelector(store => store.user);
+  console.log(user);
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation('common');
 
   const handleChange = (event: SelectChangeEvent) => {
-    const { target } = event;
-    [setLng, i18n.changeLanguage].forEach((fn) => fn(target.value));
+    const { target: { value }} = event;
+    i18n.changeLanguage(value);
+    dispatch(updateUserLang(value));
   };
 
   return (
@@ -30,7 +32,7 @@ const SelectLng: FC<SelectLngProps> = ({ lang = language.en }) => {
           {t('topbar.lang')}
         </InputLabel>
         <Select
-          defaultValue={lang}
+          value={user.favLng}
           onChange={handleChange}
           autoWidth
           label={t('topbar.lang')}
