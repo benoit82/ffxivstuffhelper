@@ -16,7 +16,6 @@ const userSlice = createSlice({
     updateUserLang: (state, { payload }) => ({ ...state, favLng: payload }),
   },
 });
-
 export const { updateUserLang } = userSlice.actions;
 
 export const store = configureStore({
