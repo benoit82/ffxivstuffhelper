@@ -1,0 +1,9 @@
+{
+  "homepage": {
+    "mainTitle": "Welcome to homepage!"
+  },
+  "topbar": {
+    "login": "login",
+    "lang": "language"
+  }
+}

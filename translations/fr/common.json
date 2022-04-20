@@ -1,0 +1,9 @@
+{
+  "homepage": {
+    "mainTitle": "Bienvenue sur la page d'accueil !"
+  },
+  "topbar": {
+    "login": "identification",
+    "lang": "langue"
+  }
+}
