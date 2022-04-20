@@ -6,7 +6,7 @@ describe('Home', () => {
     render(<Home />);
 
     const homepageTitle = screen.getByRole('heading', {
-      name: /Hello FFXIV Stuff Helper Homepage/i,
+      name: /homepage.mainTitle/i,
     });
     expect(homepageTitle).toBeInTheDocument();
   });
