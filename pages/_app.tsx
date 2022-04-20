@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [useDarkMode, setUseDarkMode] = useState(true);
   const drawerWidth = 250;
   i18next.init({
-    lng: store.getState().user.favLng ||'en',
+    lng: store.getState().user.favLng || 'en',
     resources: {
       en: {
         common: common_en,

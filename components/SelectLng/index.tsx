@@ -1,26 +1,26 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateUserLang, UserState } from '@/src/redux';
+import { RootState, updateUserLang, UserState } from '@/src/redux';
 
 const language = {
   en: 'en',
   fr: 'fr',
 };
 
-
 const SelectLng: FC = () => {
-  const user: UserState = useSelector(store => store.user);
-  console.log(user);
+  const user = useSelector<RootState, UserState>((store) => store.user);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation('common');
 
   const handleChange = (event: SelectChangeEvent) => {
-    const { target: { value }} = event;
+    const {
+      target: { value },
+    } = event;
     i18n.changeLanguage(value);
     dispatch(updateUserLang(value));
   };
