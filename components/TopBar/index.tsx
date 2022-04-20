@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,6 +8,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ThemeSwitch from '../ThemeSwitch';
+import SelectLng from '../SelectLng';
 
 interface TopBarProps {
   toggleDrawerMenu: () => void;
@@ -19,6 +21,7 @@ const TopBar: FC<TopBarProps> = ({
   drawerOpen,
   switchTheme,
 }) => {
+  const { t, i18n } = useTranslation('common');
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -38,8 +41,10 @@ const TopBar: FC<TopBarProps> = ({
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             FFXIV Stuff Helper
           </Typography>
+
+          <SelectLng />
           <ThemeSwitch sx={{ m: 1 }} onClick={switchTheme} defaultChecked />
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">{t('topbar.login')}</Button>
         </Toolbar>
       </AppBar>
     </Box>
