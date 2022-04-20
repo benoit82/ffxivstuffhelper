@@ -3,30 +3,17 @@ import type { AppProps } from 'next/app';
 import TopBar from '@/components/TopBar';
 import { Box, CssBaseline, Drawer, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { I18nextProvider } from 'react-i18next';
-import i18next from 'i18next';
-import common_en from '@/translations/en/common.json';
-import common_fr from '@/translations/fr/common.json';
 import { Provider } from 'react-redux';
 import { store } from '@/src/redux';
+import i18next from '@/src/i18config';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [useDarkMode, setUseDarkMode] = useState(true);
   const drawerWidth = 250;
-  i18next.init({
-    lng: store.getState().user.favLng || 'en',
-    resources: {
-      en: {
-        common: common_en,
-      },
-      fr: {
-        common: common_fr,
-      },
-    },
-  });
 
   const toggleDrawerMenu = () => {
     setOpenDrawer(!openDrawer);
@@ -38,6 +25,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         mode: darkMode ? 'dark' : 'light',
       },
     });
+
+  useEffect(() => {
+    // check local storage for uid, then log
+  }, []);
 
   return (
     <Provider store={store}>
